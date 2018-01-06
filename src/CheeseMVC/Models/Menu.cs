@@ -7,5 +7,9 @@ namespace CheeseMVC.Models
 {
     public class Menu
     {
+        //-p3- The Menu and CheeseMenu Classes
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public IList<CheeseMenu> CheeseMenus { get; set; }
     }
 }

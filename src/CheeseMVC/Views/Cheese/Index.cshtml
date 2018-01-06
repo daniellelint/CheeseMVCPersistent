@@ -2,12 +2,13 @@
 
 <h1>@ViewBag.Title</h1>
 
+<!--p2-Update the table-->
 <table class="table">
 
     <tr>
         <th>Name</th>
         <th>Description</th>
-        <td>Type</td>
+        <th>Category</th>
     </tr>
 
     @foreach (var cheese in Model)
@@ -15,14 +16,14 @@
         <tr>
             <td>@cheese.Name</td>
             <td>@cheese.Description</td>
-            <td>@cheese.Type</td>
+            <td>@cheese.Category.Name</td>
         </tr>
     }
 </table>
 
 @if (Model.Count == 0)
 {
-    <p>No cheeses yet!</p>
+    <p>Add a Cheese to Display the Current List</p>
 }
 
-<p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
+<p><a asp-controller="Cheese" asp-action="Add">Add to Cheese List</a></p>

@@ -1,28 +1,27 @@
-﻿@model CheeseMVC.ViewModels.AddMenuItemViewModel
+﻿<!--p3-LIST MENUS-->
+
+@model CheeseMVC.ViewModels.AddMenuItemViewModel
 
 @{
-    ViewData["Title"] = "AddItem";
+    ViewBag.Title = "Add Item to Menu:" + Model.Menu.Name;
 }
-
-<h2>AddItem</h2>
-
-<h4>AddMenuItemViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AddItem">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
-</div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+
+    <h2>
+        Add Item to Menu: @Model.Menu.Name
+    </h2>
+
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<form asp-controller="Menu" asp-action="AddItem" method="post">
+    <div class="form-group">
+        <label asp-for="CheeseID">Add Item:</label>
+        <select asp-for="CheeseID" asp-items="Model.Cheeses"></select>
+        <span asp-validation-for="CheeseID"></span>
+    </div>
+
+    <input type="hidden" name="MenuID" value="@Model.Menu.ID" />
+
+    <input type="submit" value="Add Item" />
+</form>

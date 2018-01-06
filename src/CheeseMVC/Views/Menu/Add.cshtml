@@ -1,28 +1,15 @@
-﻿@model CheeseMVC.ViewModels.AddMenuViewModel
+﻿<!--p3-LIST MENUS-->
 
-@{
-    ViewData["Title"] = "Add";
-}
+@model CheeseMVC.ViewModels.AddMenuViewModel
 
-<h2>Add</h2>
+<h1>Add Menu</h1>
 
-<h4>AddMenuViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Add">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+<form asp-controller="Menu" asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <input type="submit" value="Create Menu" />
+</form>

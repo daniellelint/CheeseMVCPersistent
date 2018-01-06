@@ -1,28 +1,16 @@
-﻿@model CheeseMVC.Models.Menu
+﻿<!--p3-LIST MENUS-->
 
-@{
-    ViewData["Title"] = "Index";
-}
+@model IEnumerable<CheeseMVC.Models.Menu>
 
-<h2>Index</h2>
+<h2>Menus</h2>
 
-<h4>Menu</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Index">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
-</div>
+<ul>
+    @foreach (var menu in Model)
+    {
+        <li>
+            <a asp-controller="Menu" asp-action="ViewMenu" asp-route-id="@menu.ID">@menu.Name</a>
+        </li>
+    }
+</ul>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<p><a asp-controller="Menu" asp-action="Add">Add Menu</a></p>
